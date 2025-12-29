@@ -1,0 +1,6 @@
+# Tesla node registration — stub
+class TeslaNode:
+    def __init__(self, x_handle: str):
+        if not x_handle.startswith("@"):
+            raise ValueError("Valid @X handle required")
+        self.x_handle = x_handle

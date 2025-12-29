@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qill-os"
+version = "2.5"
+description = "Tesla-Powered Planetary Energy Abundance Engine"
+authors = [{name = "Daniel H. Fingal", email = "daniel@qillquantum.com"}]
+license = {text = "MIT"}
+readme = "README.md"

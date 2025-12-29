@@ -1,0 +1,53 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "QOS — Planetary Energy Abundance",
+    "tags": ["qos", "energy", "tesla"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "10s",
+    "panels": [
+      {
+        "title": "Global Reserve (EUR)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "qill_reserve_eur{scope=\"global\"}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyEUR",
+            "decimals": 2
+          }
+        },
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 }
+      },
+      {
+        "title": "Cycle Yield (Last Hour)",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(qill_yield_eur_total[1h])",
+            "refId": "A"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 }
+      },
+      {
+        "title": "Provider Health",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "qill_provider_health",
+            "refId": "A"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 24, "x": 0, "y": 8 }
+      }
+    ]
+  },
+  "overwrite": true
+}

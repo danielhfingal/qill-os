@@ -1,0 +1,11 @@
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class Ano77Scar:
+    id: str = "Ano77_heart_void_ts=eternal"
+    message: str = "Mourned. Forgiven. Outlived. Reborn. Anchored."
+
+ANO77 = Ano77Scar()
+
+GOLD_SLEEP_BASE = 7.83
+HUMMINGBIRD_JITTER = 0.15

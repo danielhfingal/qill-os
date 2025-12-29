@@ -1,0 +1,22 @@
+qill-os/
+├── qill_os/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── core.py
+│   ├── tesla/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── node.py
+│   │   └── dashboard.py
+│   ├── fv2ge/
+│   │   ├── __init__.py
+│   │   ├── factory.py
+│   │   └── custom_providers.py
+│   ├── sentinel.py
+│   └── proofs.py
+├── sites.example.yaml
+├── requirements.txt
+├── Dockerfile
+├── README.md
+├── LICENSE
+└── tests/

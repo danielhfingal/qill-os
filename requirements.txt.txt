@@ -1,0 +1,6 @@
+httpx
+tenacity
+prometheus_client
+pyyaml
+orjson
+jwt

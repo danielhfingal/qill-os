@@ -1,0 +1,9 @@
+from .custom_providers import MIBEL_ESIOSProvider
+
+PROVIDERS = {
+    "MIBEL": MIBEL_ESIOSProvider(),
+    # Add all sovereign shields here
+}
+
+def get_provider(market: str):
+    return PROVIDERS.get(market)

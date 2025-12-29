@@ -1,0 +1,3 @@
+# Tesla API auth + @X handle mandatory — stub for future
+def require_tesla_auth():
+    pass

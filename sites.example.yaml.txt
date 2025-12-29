@@ -1,0 +1,5 @@
+sites:
+  - market: "MIBEL"
+    zone: null
+  - market: "ERCOT"
+    zone: "HB_NORTH"

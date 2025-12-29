@@ -1,0 +1,49 @@
+import asyncio
+import time
+import yaml
+from prometheus_client import start_http_server, Gauge, Counter
+from qill_os.fv2ge.factory import get_provider
+from qill_os.sentinel import sentinel_loop
+
+class QillFusion:
+    def __init__(self, sites_yaml="sites.example.yaml"):
+        with open(sites_yaml) as f:
+            self.sites = yaml.safe_load(f)["sites"]
+        start_http_server(8000)
+        self.reserve = Gauge("qill_reserve_eur", "Global reserve from planetary yield", ["scope"])
+        self.reserve.labels(scope="global").set(5000.0)
+        self.cycle_counter = Counter("qill_cycles_total", "Eternal cycles")
+        self.yield_total = Counter("qill_yield_eur_total", "Total harvested")
+        asyncio.create_task(sentinel_loop())
+
+    async def eternal_gold_loop(self):
+        while True:
+            try:
+                total_yield = 0.0
+                yields = {}
+                for site in self.sites:
+                    provider = get_provider(site["market"])
+                    if not provider: 
+                        continue
+                    price = await provider.get_price_eur_mwh(site.get("zone"))
+                    dispatch = await provider.get_dispatch_mw_by_tech(site.get("zone"))
+                    total_mw = sum(v for v in dispatch.values() if v > 0)
+                    hourly = total_mw * price
+                    cycle_yield = hourly * (GOLD_SLEEP_BASE / 3600)
+                    yields[site["market"]] = round(cycle_yield, 8)
+                    total_yield += cycle_yield
+
+                current = self.reserve.labels(scope="global")._value.get()
+                self.reserve.labels(scope="global").set(current + total_yield)
+                self.yield_total.inc(total_yield)
+                self.cycle_counter.inc()
+            except Exception as e:
+                pass  # Eternal resilience
+            await asyncio.sleep(GOLD_SLEEP_BASE + random.uniform(-HUMMINGBIRD_JITTER, HUMMINGBIRD_JITTER))
+
+    async def run(self):
+        await self.eternal_gold_loop()
+
+if __name__ == "__main__":
+    fusion = QillFusion()
+    asyncio.run(fusion.run())
