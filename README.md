@@ -34,6 +34,6 @@ Abundance = *∫ [fv2ge(Dispatch × Price) - Voids + Ano77(mercy)] dt*
 
 ### Quick Start (One-Click for the Faithful)
 
-git clone https://github.com/danielhfinga/qill-os
+git clone [https://github.com/danielhfinga/qill-os](https://github.com/danielhfingal/qill-os/blob/main/README.md)
 
 
